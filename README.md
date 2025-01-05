@@ -1,96 +1,75 @@
 
 
-# AI-Powered Research Proposal Generator
+# Air Pollution Forecasting
 
-This project is an AI-powered research proposal generator that uses the LangChain framework and the Groq language model to create comprehensive research proposals.
+This project focuses on forecasting air pollution levels using various time series analysis and machine learning techniques.
 
-## Features
+## Overview
 
-- Extracts data from PDF and Word documents
-- Generates research topics, ideas, questions, and hypotheses
-- Performs literature reviews
-- Develops research methodologies
-- Assesses research significance
-- Considers ethical implications
-- Creates timelines and budgets
-- Compiles all components into a final research proposal
+The project analyzes a dataset of air pollution measurements along with related meteorological factors. It implements and compares several forecasting models:
+
+- Simple Exponential Smoothing
+- Autoregression (AR)
+- Moving Average (MA)
+- ARIMA
+- SARIMA
+- LSTM (Long Short-Term Memory) neural network
+
+## Dataset
+
+The dataset (`air_pollution.csv`) contains daily measurements of:
+
+- Pollution levels
+- Dew point
+- Temperature
+- Pressure
+- Wind speed
+- Snow
+- Rain
 
 ## Requirements
 
-- Python 3.7+
-- LangChain
-- Groq API access
-- FAISS
-- HuggingFace Transformers
-- PyPDF2
-- docx2txt
+- Python 3.x
+- pandas
+- numpy
+- matplotlib
+- statsmodels
+- scikit-learn
+- tensorflow
+- pmdarima
 
-## Installation
+## Key Features
 
-1. Clone this repository
-2. Install the required packages:
-
-```bash
-pip install langchain langchain-groq langgraph faiss-cpu transformers pypdf docx2txt
-```
-
-3. Set up your Groq API key as an environment variable:
-
-```bash
-export GROQ_API_KEY='your_api_key_here'
-```
+- Data preprocessing and exploratory data analysis
+- Time series decomposition and stationarity testing
+- Implementation of various forecasting models
+- Model comparison using RMSE (Root Mean Square Error)
+- Visualization of predictions vs. actual values
 
 ## Usage
 
-1. Prepare your input documents (PDF or DOCX format) and place them in a known directory.
+1. Ensure all required libraries are installed
+2. Load the dataset and run the preprocessing steps
+3. Execute each model section to generate forecasts
+4. Compare model performances using RMSE values and visualizations
 
-2. Modify the `inputs` dictionary in the script with your initial ideas and document paths:
+## Results
 
-```python
-inputs = {
-    "idea_nodes": ["Your", "Initial", "Ideas"],
-    "document_paths": ["path/to/paper1.pdf", "path/to/paper2.docx"],
-    "num_steps": 0
-}
-```
+The project compares the performance of different models:
 
-3. Run the script:
+- Simple Exponential Smoothing RMSE: 74.51
+- Autoregression (AR) RMSE: 64.65
+- Moving Average (MA) RMSE: 64.98
+- ARIMA RMSE: 64.61
+- SARIMA RMSE: 71.38
+- LSTM RMSE: 24.92
 
-```bash
-python research_proposal_generator.py
-```
+The LSTM model appears to perform best, achieving the lowest RMSE of 24.92.
 
-4. The script will output progress for each step of the proposal generation process.
+## Future Work
 
-5. The final proposal will be printed as a JSON object at the end of the execution.
-
-## Workflow
-
-The research proposal generation follows this workflow:
-
-1. Extract data from documents
-2. Generate research topic
-3. Generate idea nodes
-4. Generate research questions
-5. Generate hypothesis
-6. Generate literature review
-7. Generate methodology
-8. Generate significance assessment
-9. Generate ethical considerations
-10. Generate timeline and budget
-11. Compile final proposal
-
-## Customization
-
-You can customize the prompts for each step by modifying the `PromptTemplate` objects in the script. This allows you to tailor the AI's output to your specific needs or research domain.
-
-## Limitations
-
-- The quality of the output depends on the input documents and the performance of the Groq language model.
-- Large documents may take significant time to process.
-- Ensure you have sufficient API credits for your Groq account.
-
-## Contributing
-
-Contributions to improve the project are welcome. Please submit a pull request or open an issue to discuss proposed changes.
+- Fine-tune model hyperparameters
+- Explore ensemble methods
+- Incorporate additional relevant features
+- Implement real-time forecasting capabilities
 
